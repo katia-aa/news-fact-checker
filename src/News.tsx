@@ -185,7 +185,7 @@ const News: React.FC = () => {
                 }
                 isLoading={loadingFactChecks[article.id]}
               >
-                Fact Check Claim
+                Fact Check
               </Button>
             </Stack>
 
