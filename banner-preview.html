@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banner Preview</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+        }
+
+        #banner {
+            padding: 20px;
+            background-color: #f5f5f5;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="banner">
+        <h1>This is the main text.</h1>
+        <p>This is the secondary text.</p>
+    </div>
+
+    <script>
+        window.addEventListener("message", (event) => {
+            const data = event.data;
+
+            // Ensure that valid data is sent
+            if (data && data.text && data.secondaryText && data.variant) {
+                const { text, secondaryText, variant } = data;
+                const banner = document.getElementById("banner");
+
+                // Update banner content dynamically
+                if (banner) {
+                    banner.querySelector("h1").innerText = text;
+                    banner.querySelector("p").innerText = secondaryText;
+
+                    // Optional: Handle variant changes for different styles
+                    if (variant === "VARIANT1") {
+                        banner.style.backgroundColor = "#ffdddd";
+                    } else if (variant === "VARIANT2") {
+                        banner.style.backgroundColor = "#ddffdd";
+                    } else {
+                        banner.style.backgroundColor = "#f5f5f5";
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
