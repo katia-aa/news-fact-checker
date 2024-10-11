@@ -2,6 +2,9 @@ import axios from "axios";
 
 const OPENAI_API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
 
+const CORS_PROXY = "https://cors-anywhere.herokuapp.com/";
+const CURRENTS_API_URL = "https://api.openai.com/v1/chat/completions";
+
 // Use OpenAI to verify whether the claim is true or false
 export const factCheckClaimWithOpenAI = async (
   claim: string,
@@ -16,7 +19,7 @@ export const factCheckClaimWithOpenAI = async (
 
   console.log(claim);
   const response = await axios.post(
-    "https://api.openai.com/v1/chat/completions",
+    `${CORS_PROXY}${CURRENTS_API_URL}`,
     {
       model: "gpt-4o", // Use 'gpt-4' if you have access
       messages: [

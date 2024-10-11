@@ -1,9 +1,12 @@
 import axios from "axios";
 
+const CORS_PROXY = "https://cors-anywhere.herokuapp.com/";
+const CURRENTS_API_URL = "https://api.openai.com/v1/chat/completions";
+
 const OPENAI_API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
 export const summarizeArticle = async (articleContent: string) => {
   const response = await axios.post(
-    "https://api.openai.com/v1/chat/completions",
+    `${CORS_PROXY}${CURRENTS_API_URL}`,
     {
       model: "gpt-4", // Use 'gpt-4' if you're using GPT-4
       messages: [
